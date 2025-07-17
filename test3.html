@@ -9,7 +9,7 @@
   <body>
     <script>
       LIFF_ID = "2007677261-Vlq8Op60";
-      function initializeLiff() {
+      window.onload = () => {
         liff
           .init({ liffId: LIFF_ID })
           .then(() => {
