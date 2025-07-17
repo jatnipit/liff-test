@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  </head>
+  <body>
+    <div id="welcomeMessage">
+      <h1>Welcome to the LIFF App</h1>
+      <button id="loginButton">Login with LINE</button>
+    </div>
+    <script>
+      const LIFF_ID = "2007677261-Vlq8Op60";
+      let userProfile;
+
+      function initializeLiff() {
+        liff
+          .init({ liffId: LIFF_ID })
+          .then(() => {
+            if (!liff.isLoggedIn()) {
+              liff.login();
+
+              userProfile = liff.getProfile();
+            }
+            document.getElementById("welcomeMessage").innerHTML = `
+              <h1>${userProfile.displayName}Welcome to the LIFF App</h1>
+              <button id="logoutButton" onClick="logout()">Logout</button>`;
+          })
+          .catch((error) => {
+            console.error("LIFF initialization failed", error);
+          });
+      }
+
+      function logout() {
+        liff.logout();
+        window.location.href = "test3.html";
+      }
+
+      window.onload = () => {
+        initializeLiff();
+      };
+    </script>
+  </body>
+</html>

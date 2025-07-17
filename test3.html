@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  </head>
+  <body>
+    <script>
+      LIFF_ID = "2007677261-Vlq8Op60";
+      function initializeLiff() {
+        liff
+          .init({ liffId: LIFF_ID })
+          .then(() => {
+            setTimeout(() => {
+              if (liff.isInClient()) {
+                liff.closeWindow();
+              }
+            }, 5000);
+          })
+          .catch((error) => {
+            console.error("LIFF initialization failed", error);
+          });
+      }
+    </script>
+  </body>
+</html>
