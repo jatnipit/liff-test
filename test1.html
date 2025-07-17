@@ -22,10 +22,12 @@
             if (!liff.isLoggedIn()) {
               liff.login();
 
-              userProfile = await liff.getProfile();
+              return;
             }
+            userProfile = await liff.getProfile();
+
             document.getElementById("welcomeMessage").innerHTML = `
-              <h1>${userProfile}Welcome to the LIFF App</h1>
+              <h1>${userProfile.displayName}Welcome to the LIFF App</h1>
               <button id="logoutButton" onClick="logout()">Logout</button>`;
           })
           .catch((error) => {
@@ -35,7 +37,7 @@
 
       function logout() {
         liff.logout();
-        window.location.href = "https://jatnipit.github.io/liff-test/test3.html";
+        window.location.href = "test3.html";
       }
 
       window.onload = () => {
