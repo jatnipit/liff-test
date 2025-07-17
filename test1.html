@@ -25,7 +25,7 @@
               userProfile = liff.getProfile();
             }
             document.getElementById("welcomeMessage").innerHTML = `
-              <h1>${userProfile.displayName}Welcome to the LIFF App</h1>
+              <h1>${userProfile}Welcome to the LIFF App</h1>
               <button id="logoutButton" onClick="logout()">Logout</button>`;
           })
           .catch((error) => {
