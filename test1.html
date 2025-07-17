@@ -18,11 +18,11 @@
       function initializeLiff() {
         liff
           .init({ liffId: LIFF_ID })
-          .then(() => {
+          .then(async () => {
             if (!liff.isLoggedIn()) {
               liff.login();
 
-              userProfile = liff.getProfile();
+              userProfile = await liff.getProfile();
             }
             document.getElementById("welcomeMessage").innerHTML = `
               <h1>${userProfile}Welcome to the LIFF App</h1>
